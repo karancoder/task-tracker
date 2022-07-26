@@ -1,0 +1,42 @@
+.taskheading {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.4rem 0.3rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    background-color: rgb(188, 204, 255);
+    border: 2px solid rgb(135, 135, 255);
+    border-right: none;
+    border-left: none;
+}
+
+.taskheading-id,
+.taskheading-details {
+    padding: 0.5rem;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.taskheading-details {
+    min-width: 800px;
+    display: grid;
+    border-right: none !important;
+    border-left: none !important;
+    grid-template-columns: 4fr 1fr 1fr 1fr 0.4fr;
+}
+
+.done {
+    background-color: rgb(255, 255, 190);
+    border: 2px solid rgb(255, 245, 0);
+}
+
+.complete {
+    background-color: rgb(200, 255, 200);
+    border: 2px solid rgb(160, 255, 0);
+}
+
+.inprogress {
+    background-color: rgb(255, 225, 200);
+    border: 2px solid rgb(255, 200, 0);
+}
