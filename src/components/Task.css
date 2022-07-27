@@ -5,7 +5,7 @@
     box-sizing: border-box;
     /* border-radius: 3px; */
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 2fr 7fr;
 }
 
 .task-id,
@@ -21,7 +21,8 @@
     display: grid;
     border-right: none !important;
     border-left: none !important;
-    grid-template-columns: 4fr 1fr 1fr 1fr 0.4fr;
+    grid-template-columns: 3fr 1fr 0.7fr 1fr 0.4fr;
+    gap: 10px;
 }
 
 .task-details > * {

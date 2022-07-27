@@ -1,38 +1,19 @@
 import React, { useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import CreateTask from "./CreateTask";
 import Modal from "./Modal";
 import Task from "./Task";
 import TaskControlPlane from "./TaskControlPlane";
 import TaskHeading from "./TaskHeading";
 import "./TaskList.css";
-const taskListTemp = {
-    1: { description: "a", status: "DONE", parentTask: 3, childTasks: [2] },
-    2: {
-        description: "b",
-        status: "IN PROGRESS",
-        parentTask: 1,
-        childTasks: [],
-    },
-    3: {
-        description: "c",
-        status: "COMPLETE",
-        parentTask: null,
-        childTasks: [1],
-    },
-    4: {
-        description: "d",
-        status: "COMPLETE",
-        parentTask: null,
-        childTasks: [],
-    },
-};
 
 const TaskList = (): JSX.Element => {
-    const [taskList, setTaskList] = useState(taskListTemp as any);
+    const [taskList, setTaskList] = useLocalStorage("taskList");
     const [filteredTaskList, setFilteredTaskList] = useState(taskList as any);
     const [createTaskModalVisible, setCreateTaskModalVisible] = useState(false);
     const [editTaskModalVisible, setEditTaskModalVisible] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(undefined);
+
     return (
         <>
             <div className="tasklist">
@@ -83,3 +64,27 @@ const TaskList = (): JSX.Element => {
 };
 
 export default TaskList;
+
+// *=+-*=+-*=+-*=+-*=*: Sample Data :*=+-*=+-*=+-*=+-*=*
+// *-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
+// const taskListTemp = {
+//     1: { description: "a", status: "DONE", parentTask: 3, childTasks: [2] },
+//     2: {
+//         description: "b",
+//         status: "IN PROGRESS",
+//         parentTask: 1,
+//         childTasks: [],
+//     },
+//     3: {
+//         description: "c",
+//         status: "COMPLETE",
+//         parentTask: null,
+//         childTasks: [1],
+//     },
+//     4: {
+//         description: "d",
+//         status: "COMPLETE",
+//         parentTask: null,
+//         childTasks: [],
+//     },
+// };

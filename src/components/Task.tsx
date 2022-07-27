@@ -47,7 +47,6 @@ const Task = ({
                     <div className="task-description">{task.description}</div>
                     <div className="task-status">{task.status}</div>
                     <div className="task-status-checkbox">
-                        Is Done?
                         <input
                             type="checkbox"
                             checked={task.status !== "IN PROGRESS"}
