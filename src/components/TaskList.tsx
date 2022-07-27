@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateTask from "./CreateTask";
 import Modal from "./Modal";
 import Task from "./Task";
+import TaskControlPlane from "./TaskControlPlane";
 import TaskHeading from "./TaskHeading";
 import "./TaskList.css";
 const taskListTemp = {
@@ -28,57 +29,49 @@ const taskListTemp = {
 
 const TaskList = (): JSX.Element => {
     const [taskList, setTaskList] = useState(taskListTemp as any);
+    const [filteredTaskList, setFilteredTaskList] = useState(taskList as any);
     const [createTaskModalVisible, setCreateTaskModalVisible] = useState(false);
     const [editTaskModalVisible, setEditTaskModalVisible] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(undefined);
-
-    function openCreateTaskModal(event: any) {
-        setCreateTaskModalVisible(true);
-    }
     return (
         <>
             <div className="tasklist">
-                <div className="taskcontrolplane">
-                    <button className="button-1" onClick={openCreateTaskModal}>
-                        Create Task!
-                    </button>
-                </div>
+                <TaskControlPlane
+                    setCreateTaskModalVisible={setCreateTaskModalVisible}
+                    setFilteredTaskList={setFilteredTaskList}
+                    taskList={taskList}
+                />
                 <TaskHeading />
-                {Object.keys(taskList).map(
-                    (taskId: string): JSX.Element =>
-                        taskList[Number(taskId)].parentTask === null ? (
-                            <Task
-                                task={taskList[Number(taskId)]}
-                                taskId={Number(taskId)}
-                                key={Number(taskId)}
-                                setTaskList={setTaskList}
-                                taskList={taskList}
-                                nestingLevel={0}
-                                setTaskToEdit={setTaskToEdit}
-                                setEditTaskModalVisible={
-                                    setEditTaskModalVisible
-                                }
-                            />
-                        ) : (
-                            <></>
-                        )
+                {Object.keys(filteredTaskList).map(
+                    (taskId: string): JSX.Element => (
+                        <Task
+                            task={filteredTaskList[Number(taskId)]}
+                            taskId={Number(taskId)}
+                            key={Number(taskId)}
+                            setTaskList={setTaskList}
+                            taskList={taskList}
+                            nestingLevel={0}
+                            setTaskToEdit={setTaskToEdit}
+                            setEditTaskModalVisible={setEditTaskModalVisible}
+                        />
+                    )
                 )}
             </div>
             {createTaskModalVisible && (
-                <Modal setModalVisiblity={setCreateTaskModalVisible}>
+                <Modal setModalVisibility={setCreateTaskModalVisible}>
                     <CreateTask
                         setTaskList={setTaskList}
-                        setModalVisiblity={setCreateTaskModalVisible}
+                        setModalVisibility={setCreateTaskModalVisible}
                         isCreate={true}
                         taskList={taskList}
                     />
                 </Modal>
             )}
             {editTaskModalVisible && (
-                <Modal setModalVisiblity={setEditTaskModalVisible}>
+                <Modal setModalVisibility={setEditTaskModalVisible}>
                     <CreateTask
                         setTaskList={setTaskList}
-                        setModalVisiblity={setEditTaskModalVisible}
+                        setModalVisibility={setEditTaskModalVisible}
                         isCreate={false}
                         taskToEdit={taskToEdit}
                         taskList={taskList}

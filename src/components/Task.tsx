@@ -1,4 +1,4 @@
-import { getUpdatedStatusesAfterToggle } from "../utilities/taskStatusUtitilies";
+import { getUpdatedStatusesAfterToggle } from "../utilities/taskStatusUtilities";
 import "./Task.css";
 import { AiTwotoneEdit } from "react-icons/ai";
 

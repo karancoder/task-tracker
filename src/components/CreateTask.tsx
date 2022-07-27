@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import {
     getValidParentIDs,
     resolveAndPropagate,
-} from "../utilities/taskStatusUtitilies";
+} from "../utilities/taskStatusUtilities";
 import "./CreateTask.css";
 
 const CreateTask = ({
     setTaskList,
-    setModalVisiblity,
+    setModalVisibility,
     taskToEdit,
     isCreate,
     taskList,
 }: {
     setTaskList: Function;
-    setModalVisiblity: Function;
+    setModalVisibility: Function;
     taskToEdit?: number;
     isCreate: boolean;
     taskList: any;
@@ -33,7 +33,7 @@ const CreateTask = ({
         event.preventDefault();
         let newTaskID = Math.floor(Math.random() * 1000);
         patchTaskIntoTaskList(setTaskList, formData, newTaskID);
-        setModalVisiblity(false);
+        setModalVisibility(false);
     }
 
     function handleEditClick(event: any) {
@@ -41,7 +41,7 @@ const CreateTask = ({
         if (taskToEdit !== undefined) {
             patchTaskIntoTaskList(setTaskList, formData, taskToEdit);
         }
-        setModalVisiblity(false);
+        setModalVisibility(false);
     }
 
     return (

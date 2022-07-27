@@ -4,14 +4,14 @@ import ModalCard from "./ModalCard";
 
 function Modal({
     children,
-    setModalVisiblity,
+    setModalVisibility,
 }: {
     children: any;
-    setModalVisiblity: Function;
+    setModalVisibility: Function;
 }): JSX.Element {
     function handleEsc(event: KeyboardEvent) {
         if (event.key === "Escape") {
-            setModalVisiblity(false);
+            setModalVisibility(false);
         }
     }
 
