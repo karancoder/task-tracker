@@ -24,6 +24,10 @@
     padding: 0.7rem;
 }
 
+.filter > *:nth-child(1) {
+    font-weight: bold;
+}
+
 .button-1 {
     background-color: #ea4c89;
     border-radius: 8px;

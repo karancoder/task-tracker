@@ -31,7 +31,9 @@ const CreateTask = ({
 
     function handleCreateClick(event: any) {
         event.preventDefault();
-        let newTaskID = Math.floor(Math.random() * 1000);
+        let newTaskID =
+            Math.floor(new Date().getTime() / 1000) %
+            Math.floor(new Date("2022-07-27").getTime() / 1000);
         patchTaskIntoTaskList(setTaskList, formData, newTaskID);
         setModalVisibility(false);
     }
@@ -73,7 +75,7 @@ const CreateTask = ({
                     {["", ...getValidParentIDs(taskList, taskToEdit)].map(
                         (taskId) => (
                             <option value={taskId} key={taskId}>
-                                {taskId}
+                                {taskId !== "" ? taskId : "No Parent Task"}
                             </option>
                         )
                     )}
